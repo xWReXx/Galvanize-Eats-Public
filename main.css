@@ -36,3 +36,9 @@ body {
 .orderBorder {
     border: 1px solid black;
 }
+
+.addButton {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+}
