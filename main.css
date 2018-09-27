@@ -1,0 +1,36 @@
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: space-between;
+    height: 100vh;
+
+}
+
+main {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-image: url(https://c.pxhere.com/photos/1d/10/dinner_salad_restaurant_italians_berlin_kurf_rstendamm-693978.jpg!d);
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.startedButton {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 80%;
+}
+
+.bottomInfo {
+    position: absolute;
+    bottom: 0;
+    
+}
+
+.botText {
+   margin-left: auto;
+   margin-right: auto; 
+}
