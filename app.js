@@ -36,11 +36,12 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
 
         var buttonArr = document.getElementsByClassName('addToOrder')
         var tableCheckout = document.getElementById('checkoutTable')
-
+        var subTotalPrice = document.getElementById('subTotal')
 
         for (let i = 0; i < buttonArr.length; i++) {
             buttonArr[i].addEventListener("click", function (event) {
                 var name = event.target.getAttribute('data-name')
+                
                 if (order[name]) {
                     order[name].quantity++
                     order[name].price += Number(event.target.getAttribute('data-price'))
@@ -52,8 +53,8 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                         price: Number(event.target.getAttribute('data-price'))
                     }
                     totalPrice += Number(event.target.getAttribute('data-price'))
-                    console.log(totalPrice)
                 }
+                subTotalPrice.innerHTML = "Sub Total: $" + totalPrice
                 generateTable()
                 getCancelButton()
             })

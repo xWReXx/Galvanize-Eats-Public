@@ -39,25 +39,57 @@
                     <tr>
                 </table>
             </div>
-            <div class="col m6  orderBorder">
+            <div class="col m6">
                 <h4>Checkout</h4>
                 <table id="checkoutTable">
-                        <tr>
-                            <th>Price</th>
-                            <th>Item</th>
-                            <th>Qunatity</th>
-                            <th>Cancel Item</th>
-                        </tr>
-                        <tr class="checkoutRows"></tr>
-                        <tr class="checkoutRows"></tr>
-                        <tr class="checkoutRows"></tr>
-                        <tr class="checkoutRows"></tr>
-                        <tr class="checkoutRows"></tr>
-                <table ></table>
-                    </table>
+                    <tr>
+                        <th>Price</th>
+                        <th>Item</th>
+                        <th>Qunatity</th>
+                        <th>Cancel Item</th>
+                    </tr>
+                    <tr class="checkoutRows"></tr>
+                    <tr class="checkoutRows"></tr>
+                    <tr class="checkoutRows"></tr>
+                    <tr class="checkoutRows"></tr>
+                    <tr class="checkoutRows"></tr>
+                    <table></table>
+                </table>
             </div>
         </div>
+        <div class="row"></div>
         <div class="row">
+            <div class="col s6">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="email" class="validate">
+                            <label for="password">Email Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="text" class="validate">
+                            <label for="email">Physical Address</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="col s6">
+                <div id="subTotal"></div>
+            </div>
 
         </div>
     </main>
