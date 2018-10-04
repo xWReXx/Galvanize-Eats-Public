@@ -1,3 +1,3 @@
 # Galvanize Eats
 
-ADD YOUR DEPLOYED URL HERE
+g-eats102.surge.sh
