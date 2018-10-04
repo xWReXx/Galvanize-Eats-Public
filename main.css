@@ -34,7 +34,8 @@ body {
 }
 
 .orderBorder {
-    border: 1px solid black;
+    border: 5px solid lightgray;
+    border-radius: 25%:
 }
 
 .addButton {
