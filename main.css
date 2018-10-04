@@ -34,12 +34,35 @@ body {
 }
 
 .orderBorder {
-    border: 5px solid lightgray;
-    border-radius: 25%:
+    border: 5px solid #FF6F00;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 25px;
+}
+
+.totalBorder {
+    border: 2px solid #FF6F00;
+    padding-top: 1% !important;
+    padding-bottom: 1% !important;
+    border-radius: 10px;
+}
+
+.testborder {
+    border: 1px solid black;
 }
 
 .addButton {
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.buttonFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.tipBtn {
+    position: relative;
+    left: 5px;
 }

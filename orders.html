@@ -25,6 +25,7 @@
     </header>
 
     <div class="row"></div>
+    
     <main class="container orderBorder">
         <div class="row"></div>
         <div class="row">
@@ -40,7 +41,7 @@
                 </table>
             </div>
             <div class="col m6">
-                <h4>Checkout</h4>
+                <h4>Order Cart</h4>
                 <table class="highlight" id="checkoutTable">
                     <tr>
                         <th>Price</th>
@@ -63,8 +64,9 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">First Name</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="last_name" type="text" class="validate">
@@ -72,28 +74,87 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="email" class="validate">
-                            <label for="password">Email Address</label>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">email</i>
+                            <input id="icon_prefix" type="email" class="validate">
+                            <label for="icon_prefix">Email</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            <input id="icon_telephone" type="tel" class="validate">
+                            <label for="icon_telephone">Telephone</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="text" class="validate">
-                            <label for="email">Physical Address</label>
+                            <i class="material-icons prefix">home</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Street Address</label>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- <script>
+                            $(document).ready(function () {
+                                $('select').material_select();
+                            });
+                        </script> -->
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">my_location</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Zipcode</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Select State</label>
+                        </div>
+
                     </div>
                 </form>
 
             </div>
-
             <div class="col s6">
-                <div id="subTotal"></div>
-                <div id="finalPrice"></div>
+                
+                <div class="col s4 totalBorder">
+                    <table>
+                        <tr>
+                            <th>Subtotal: </th>
+                            <td id="subTotal">0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Tip Amount: </th>
+                            <td id="tipPrice">0.00</td>
+                        </tr>
+                        <tr>
+                                <th>After Tax: </th>
+                                <td id="finalPrice">0.00</td>
+                            </tr>
+                    </table>
+                    
+                </div>
+                <div class="buttonFlex testborder">
+                    <div class="col s3">
+                        <a class="tipBtn waves-effect amber darken-2 waves-light btn" data-tip="0.10">10%Tip</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="tipBtn waves-effect amber darken-3 waves-light btn" data-tip="0.15">15%Tip</a>
+                    </div>
+                    <div class="col s3">
+                        <a class="tipBtn waves-effect amber darken-4 waves-light btn" data-tip="0.20">20%Tip &#37;</a>
+                    </div>
+                </div>
             </div>
-
         </div>
+
     </main>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="app.js"></script>
 </body>

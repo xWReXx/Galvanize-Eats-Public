@@ -1,13 +1,22 @@
 console.log("app.js linked")
 
-var tableMenu = document.getElementById('menuTable')
-var tableCheckout = document.getElementById('checkoutTable')
+
 var cancelArr = []
 var order = {}
 var price = 0
 var totalPrice = 0
 var afterTax = 0
+var tip = 0
+var tipAmount = 0
+var afterTip = 0
 var fixedPrice = totalPrice.toFixed(2)
+var buttonArr = document.getElementsByClassName('addToOrder')
+var tableCheckout = document.getElementById('checkoutTable')
+var subTotalPrice = document.getElementById('subTotal')
+var finalPrice = document.getElementById('finalPrice')
+var tipHTML = document.getElementById('tipPrice')
+var tableMenu = document.getElementById('menuTable')
+var tableCheckout = document.getElementById('checkoutTable')
 
 fetch('https://galvanize-eats-api.herokuapp.com/menu')
     .then((response) => response.json())
@@ -35,10 +44,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             itag.innerHTML = 'add'
         }
 
-        var buttonArr = document.getElementsByClassName('addToOrder')
-        var tableCheckout = document.getElementById('checkoutTable')
-        var subTotalPrice = document.getElementById('subTotal')
-        var finalPrice = document.getElementById('finalPrice')
+
         for (let i = 0; i < buttonArr.length; i++) {
             buttonArr[i].addEventListener("click", function (event) {
                 var name = event.target.getAttribute('data-name')
@@ -46,7 +52,8 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                     order[name].quantity++
                     order[name].subTotal += Number(event.target.getAttribute('data-price'))
                     totalPrice += Number(event.target.getAttribute('data-price'))
-                    afterTax = (totalPrice * 0.08) + totalPrice
+                    tipAmount = totalPrice * tip
+                    afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
                 } else {
                     order[name] = {
                         quantity: 1,
@@ -55,17 +62,14 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                         name: event.target.getAttribute('data-name')
                     }
                     totalPrice += Number(event.target.getAttribute('data-price'))
-                    afterTax = (totalPrice * 0.08) + totalPrice
+                    tipAmount = totalPrice * tip
+                    afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
                 }
-
-                subTotalPrice.innerHTML = "Sub Total: $" + totalPrice.toFixed(2)
-                finalPrice.innerHTML = "After Tax $" + afterTax.toFixed(2)
                 generateTable()
             })
-
-
-
         }
+
+        var tipARR = document.getElementsByClassName('tipBtn')
 
 
         function generateTable() {
@@ -85,6 +89,9 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             itemTH.innerHTML = "Item"
             qunatityTH.innerHTML = "Quantity"
             cancelTH.innerHTML = "Remove Item"
+            subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
+            finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+            tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
 
             for (var item in order) {
                 var fixedSubTotal = order[item].subTotal
@@ -119,11 +126,23 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                         order[name].quantity--
                         order[name].subTotal = Number(event.target.getAttribute('data-totalPrice')) - Number(event.target.getAttribute('data-price'))
                         totalPrice -= Number(event.target.getAttribute('data-price'))
-                        afterTax = (totalPrice * 0.08) + totalPrice
-                        subTotalPrice.innerHTML = "Sub Total: $" + totalPrice.toFixed(2)
-                        finalPrice.innerHTML = "After Tax $" + afterTax.toFixed(2)
+                        afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
+                        subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
+                        tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
+                        finalPrice.innerHTML = "$" + afterTax.toFixed(2)
                         generateTable()
                     }
+                })
+            }
+            for (var i = 0; i < tipARR.length; i++) {
+                tipARR[i].addEventListener('click', function (event) {
+                    tip = Number(event.target.getAttribute('data-tip'))
+                    tipAmount = totalPrice * tip
+                    afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
+                    subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
+                    tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
+                    finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+                    generateTable()
                 })
             }
         }
