@@ -19,6 +19,13 @@ var tableMenu = document.getElementById('menuTable')
 var tableCheckout = document.getElementById('checkoutTable')
 var inputForm = document.querySelector('form')
 var tipARR = document.getElementsByClassName('tipBtn')
+var first = document.getElementById('firstName')
+var lastName = document.getElementById('lastName')
+var phone = document.getElementById('phone')
+var email = document.getElementById('email')
+var address = document.getElementById('address')
+var zipcode = document.getElementById('zipcode')
+var state = document.getElementById('state')
 
 fetch('https://galvanize-eats-api.herokuapp.com/menu')
     .then((response) => response.json())
@@ -147,41 +154,35 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             }
         }
 
-var first = document.getElementById('firstName')
-var lastName = document.getElementById('lastName')
-var phone = document.getElementById('phone')
-var email = document.getElementById('email')
-var address = document.getElementById('address')
-var zipcode = document.getElementById('zipcode')
-var state = document.getElementById('state')
-
-inputForm.addEventListener('submit', function (event) {
-        event.preventDefault(); 
-        var sendOrder = {
-            name: first.value + " " + lastName.value,
-            telephone: phone.value,
-            email: email.value,
-            address: address.value + " " + state[state.selectedIndex].innerHTML + ", " + zipcode.value,
-            finalOrder: order
-        }
-        var postSettings = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(sendOrder)
-        }
-        fetch('https://galvanize-eats-api.herokuapp.com/orders', postSettings)
-            .then(function (response) {
-                var data = response.json()
-                return data
+        inputForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            var sendOrder = {
+                name: first.value + " " + lastName.value,
+                telephone: phone.value,
+                email: email.value,
+                address: address.value + " " + state[state.selectedIndex].innerHTML + ", " + zipcode.value,
+                finalOrder: order,
+                tip: "$" + tipAmount.toFixed(2),
+                FinalPrice: "$" + afterTax.toFixed(2)
+            }
+            console.log(sendOrder)
+            var postSettings = {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify(sendOrder)
+            }
+            fetch('https://galvanize-eats-api.herokuapp.com/orders', postSettings)
+            .then(function(response){
+                // var data = response.json()
+                console.log(response)
+                return data 
             })
-            .then(console.log(data.message))
+            .then(function(data){
+                console.log(data.message)
+            })
+            .catch(console.error)
+        })
     })
-
-    })
-
-
-
-
     .catch(console.error)
