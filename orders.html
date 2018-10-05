@@ -25,7 +25,7 @@
     </header>
 
     <div class="row"></div>
-    
+
     <main class="container orderBorder">
         <div class="row"></div>
         <div class="row">
@@ -65,98 +65,162 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="text" class="validate">
+                            <input id="icon_prefix" type="text" class="validate" id="firstName">
                             <label for="icon_prefix">First Name</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
+                            <input id="last_name" type="text" class="validate" id="lastName">
                             <label for="last_name">Last Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">email</i>
-                            <input id="icon_prefix" type="email" class="validate">
+                            <input id="icon_prefix" type="email" class="validate" id="email">
                             <label for="icon_prefix">Email</label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="icon_telephone" type="tel" class="validate">
+                            <input id="icon_telephone" type="tel" class="validate" id="phone">
                             <label for="icon_telephone">Telephone</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">home</i>
-                            <input id="icon_prefix" type="text" class="validate">
+                            <input id="icon_prefix" type="text" class="validate" id="adress">
                             <label for="icon_prefix">Street Address</label>
                         </div>
                     </div>
 
                     <div class="row">
-                        <!-- <script>
-                            $(document).ready(function () {
-                                $('select').material_select();
-                            });
-                        </script> -->
+
                         <div class="input-field col s6">
                             <i class="material-icons prefix">my_location</i>
-                            <input id="icon_prefix" type="text" class="validate">
+                            <input id="icon_prefix" type="text" class="validate" id="zipcode">
                             <label for="icon_prefix">Zipcode</label>
                         </div>
                         <div class="input-field col s6">
-                            <select>
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                            <select class="validate">
+                                <option value="" disabled selected>Choose your State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
                             </select>
                             <label>Select State</label>
                         </div>
 
                     </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <button class="btn waves-effect waves-light amber darken-4 btn-large" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
             <div class="col s6">
-                
-                <div class="col s4 totalBorder">
-                    <table>
-                        <tr>
-                            <th>Subtotal: </th>
-                            <td id="subTotal">0.00</td>
-                        </tr>
-                        <tr>
-                            <th>Tip Amount: </th>
-                            <td id="tipPrice">0.00</td>
-                        </tr>
-                        <tr>
+                <div class="row">
+                    <div class="col s4 totalBorder">
+                        <table>
+                            <tr>
+                                <th>Subtotal: </th>
+                                <td id="subTotal">0.00</td>
+                            </tr>
+                            <tr>
+                                <th>Tip Amount: </th>
+                                <td id="tipPrice">0.00</td>
+                            </tr>
+                            <tr>
                                 <th>After Tax: </th>
                                 <td id="finalPrice">0.00</td>
                             </tr>
-                    </table>
-                    
-                </div>
-                <div class="buttonFlex testborder">
-                    <div class="col s3">
-                        <a class="tipBtn waves-effect amber darken-2 waves-light btn" data-tip="0.10">10%Tip</a>
+                        </table>
+
                     </div>
-                    <div class="col s3">
-                        <a class="tipBtn waves-effect amber darken-3 waves-light btn" data-tip="0.15">15%Tip</a>
-                    </div>
-                    <div class="col s3">
-                        <a class="tipBtn waves-effect amber darken-4 waves-light btn" data-tip="0.20">20%Tip &#37;</a>
+                    <div class="col s8" >
+                        <div class="row">
+                            <div class="col s3">
+                                <a class="tipBtn waves-effect amber darken-2 waves-light btn" data-tip="0.10">10%Tip</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s3">
+                                <a class="tipBtn waves-effect amber darken-3 waves-light btn" data-tip="0.15">15%Tip</a>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="col s3">
+                                <a class="tipBtn waves-effect amber darken-4 waves-light btn" data-tip="0.20">20%Tip
+                                    &#37;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </main>
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="app.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
 </body>
 
 </html>

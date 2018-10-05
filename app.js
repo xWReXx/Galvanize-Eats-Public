@@ -1,6 +1,6 @@
 console.log("app.js linked")
 
-
+var proxy = "https://cors-anywhere.herokuapp.com/"
 var cancelArr = []
 var order = {}
 var price = 0
@@ -17,6 +17,8 @@ var finalPrice = document.getElementById('finalPrice')
 var tipHTML = document.getElementById('tipPrice')
 var tableMenu = document.getElementById('menuTable')
 var tableCheckout = document.getElementById('checkoutTable')
+var inputForm = document.querySelector('form')
+var tipARR = document.getElementsByClassName('tipBtn')
 
 fetch('https://galvanize-eats-api.herokuapp.com/menu')
     .then((response) => response.json())
@@ -68,9 +70,6 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 generateTable()
             })
         }
-
-        var tipARR = document.getElementsByClassName('tipBtn')
-
 
         function generateTable() {
             tableCheckout.innerHTML = ""
@@ -126,6 +125,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                         order[name].quantity--
                         order[name].subTotal = Number(event.target.getAttribute('data-totalPrice')) - Number(event.target.getAttribute('data-price'))
                         totalPrice -= Number(event.target.getAttribute('data-price'))
+                        tipAmount = totalPrice * tip
                         afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
                         subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
                         tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
@@ -146,68 +146,42 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 })
             }
         }
+
+var first = document.getElementById('firstName')
+var lastName = document.getElementById('lastName')
+var phone = document.getElementById('phone')
+var email = document.getElementById('email')
+var address = document.getElementById('address')
+var zipcode = document.getElementById('zipcode')
+var state = document.getElementById('state')
+
+inputForm.addEventListener('submit', function (event) {
+        event.preventDefault(); 
+        var sendOrder = {
+            name: first.value + " " + lastName.value,
+            telephone: phone.value,
+            email: email.value,
+            address: address.value + " " + state[state.selectedIndex].innerHTML + ", " + zipcode.value,
+            finalOrder: order
+        }
+        var postSettings = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(sendOrder)
+        }
+        fetch('https://galvanize-eats-api.herokuapp.com/orders', postSettings)
+            .then(function (response) {
+                var data = response.json()
+                return data
+            })
+            .then(console.log(data.message))
     })
 
+    })
+
+
+
+
     .catch(console.error)
-
-// var headerTR = document.createElement('tr')
-// var priceTH = document.createElement('th')
-// var itemTH = document.createElement('th')
-// var qunatityTH = document.createElement('th')
-// var cancelTH = document.createElement('th')
-// tableCheckout.appendChild(headerTR)
-// headerTR.setAttribute('id', 'checkoutHR')
-// headerTR.appendChild(priceTH)
-// headerTR.appendChild(itemTH)
-// headerTR.appendChild(qunatityTH)
-// headerTR.appendChild(cancelTH)
-// priceTH.innerHTML = 'Price'
-// itemTH.innerHTML = 'Item'
-// qunatityTH.innerHTML = 'Quantity'
-// cancelTH.innerHTML = 'Cancel Item'
-
-// function generateTable(){
-//     var checkoutRows = document.getElementsByClassName('checkoutRows')
-//     for checkoutrows = 
-//     var cheeseBrgrPrice = document.getElementById('cheeseBrgrPrice')
-//     var cheeseBrgr = document.getElementById('cheeseBrgr')
-//     var cheeseBrgrQuantity = document.getElementById('cheeseBrgrQuantity')
-//     var cheeseBrgrCancel = document.getElementById('cheeseBrgrCancel')
-//     var cheeseBrgratag = document.createElement('a')
-//     var cheeseBrgritag = document.createElement('i')
-//     // cheeseBrgrPrice.innerHTML = "$" + order[i].price
-//     cheeseBrgr.innerHTML = "Cheeseburger"
-//     // cheeseBrgrQuantity.innerHTML = order[i].quantity
-//     cheeseBrgrCancel.appendChild(atag1)
-//     cheeseBrgrCancel.appendChild(cheeseBrgratag)
-//     cheeseBrgratag.setAttribute('class', 'btn-floating btn-medium waves-effect waves-light amber darken-4')
-//     cheeseBrgratag.appendchild(cheeseBrgritag)
-//     cheeseBrgritag.getAttribute('class','')
-//     cheeseBrgritag.setAttribute('class', 'material-icons chsBrgrCacel')
-//     cheeseBrgritag.innerhtml = 'cancel'
-
-// function generateTable() {
-//     tableCheckout.innerHTML = ""
-//     for (var item in order) {
-//         var checkoutTR = document.createElement('tr')
-//         var priceTD = document.createElement('td')
-//         var nameTD = document.createElement('td')
-//         var quantityTD = document.createElement('td')
-//         var atag1 = document.createElement('a')
-//         var itag1 = document.createElement('i')
-//         tableCheckout.appendChild(checkoutTR)
-//         checkoutTR.appendChild(priceTD)
-//         priceTD.innerHTML = "$" + order[item].price
-//         checkoutTR.appendChild(nameTD)
-//         nameTD.innerHTML = item
-//         checkoutTR.appendChild(quantityTD)
-//         quantityTD.innerHTML = order[item].quantity
-//         checkoutTR.appendChild(atag1)
-//         atag1.appendChild(itag1)
-//         atag1.setAttribute('class', 'btn-floating btn-medium waves-effect waves-light amber darken-4')
-//         itag1.setAttribute('class', 'material-icons cancelItem')
-//         itag1.setAttribute('data-price', order[item].price)
-//         itag1.setAttribute('data-name', order[item].name)
-//         itag1.innerHTML = 'cancel'
-//     }
-// }
