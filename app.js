@@ -165,7 +165,6 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 tip: "$" + tipAmount.toFixed(2),
                 FinalPrice: "$" + afterTax.toFixed(2)
             }
-            console.log(sendOrder)
             var postSettings = {
                 method: 'POST',
                 headers: {
@@ -177,10 +176,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             .then(function(response){
                 // var data = response.json()
                 console.log(response)
-                return data 
-            })
-            .then(function(data){
-                console.log(data.message)
+                 
             })
             .catch(console.error)
         })
