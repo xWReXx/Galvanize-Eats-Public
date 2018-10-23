@@ -26,6 +26,44 @@ var email = document.getElementById('email')
 var address = document.getElementById('address')
 var zipcode = document.getElementById('zipcode')
 var state = document.getElementById('state')
+var cancelContainer = document.querySelector('.cancelContainer')
+var tipContainer = document.querySelector('.tipContainer')
+
+
+function removeItem (event) {
+    var name = event.target.getAttribute('data-name')
+    var quantityData = event.target.parentElement.parentElement.childNodes[2]
+    var priceTableData = event.target.parentElement.parentElement.childNodes[0]
+    if (Number(order[name].quantity) > 0) {
+        order[name].quantity--
+        order[name].subTotal = Number(event.target.getAttribute('data-totalPrice')) - Number(event.target.getAttribute('data-price'))
+        event.target.setAttribute('data-totalPrice', order[name].subTotal)
+        totalPrice -= Number(event.target.getAttribute('data-price'))
+        tipAmount = totalPrice * tip
+        afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
+        quantityData.innerHTML = order[name].quantity
+        priceTableData.innerHTML = "$" + order[name].subTotal.toFixed(2)
+        subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
+        tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
+        finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+        console.log(event.target)
+    }
+}
+
+cancelContainer.addEventListener("click", removeItem)
+
+function addTip (event) {   
+    tip = Number(event.target.getAttribute('data-tip'))
+    tipAmount = totalPrice * tip
+    afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
+    subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
+    tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
+    finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+    generateTable()          
+}
+
+tipContainer.addEventListener('click', addTip)
+           
 
 fetch('https://galvanize-eats-api.herokuapp.com/menu')
     .then((response) => response.json())
@@ -109,6 +147,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 var itag1 = document.createElement('i')
                 tableCheckout.appendChild(checkoutTR)
                 checkoutTR.appendChild(priceTD)
+                itag1.setAttribute('id', order[item].name)              
                 priceTD.innerHTML = "$" + fixedSubTotal.toFixed(2)
                 checkoutTR.appendChild(nameTD)
                 nameTD.innerHTML = item
@@ -123,35 +162,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 itag1.setAttribute('data-name', order[item].name)
                 itag1.innerHTML = 'cancel'
 
-            }
-            cancelArr = document.getElementsByClassName('cancelButton')
-            for (var i = 0; i < cancelArr.length; i++) {
-                cancelArr[i].addEventListener("click", function (event) {
-                    var name = event.target.getAttribute('data-name')
-                    if (Number(order[name].subTotal) > 0) {
-                        order[name].quantity--
-                        order[name].subTotal = Number(event.target.getAttribute('data-totalPrice')) - Number(event.target.getAttribute('data-price'))
-                        totalPrice -= Number(event.target.getAttribute('data-price'))
-                        tipAmount = totalPrice * tip
-                        afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
-                        subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
-                        tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
-                        finalPrice.innerHTML = "$" + afterTax.toFixed(2)
-                        generateTable()
-                    }
-                })
-            }
-            for (var i = 0; i < tipARR.length; i++) {
-                tipARR[i].addEventListener('click', function (event) {
-                    tip = Number(event.target.getAttribute('data-tip'))
-                    tipAmount = totalPrice * tip
-                    afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
-                    subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
-                    tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
-                    finalPrice.innerHTML = "$" + afterTax.toFixed(2)
-                    generateTable()
-                })
-            }
+            }        
         }
 
         inputForm.addEventListener('submit', function (event) {
