@@ -1,37 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <link rel='stylesheet' href='main.css'>
+    <title>Orders</title>
 </head>
-
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper amber darken-4">
-                <a href="index.html" class="brand-logo">Galvanize Eats</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="orders.html">Your Order</a></li>
+            <div class='nav-wrapper amber darken-4'>
+                <a href='index.html' class='brand-logo'>Galvanize Eats</a>
+                <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                    <li><a href='index.html'>Home</a></li>
+                    <li><a href='orders.html'>Your Order</a></li>
                 </ul>
             </div>
         </nav>
     </header>
-
-    <div class="row"></div>
-
-    <main class="container orderBorder">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col m6">
+    <div class='row'></div>
+    <main class='container orderBorder'>
+        <div class='row'></div>
+        <div class='row'>
+            <div class='col m6'>
                 <h4>Menu</h4>
-                <table class="highlight" id="menuTable">
+                <table class='highlight' id='menuTable'>
                     <tr>
                         <th>Price</th>
                         <th>Type</th>
@@ -40,186 +36,177 @@
                     </tr>
                 </table>
             </div>
-            <div class="col m6 cancelContainer">
+            <div class='col m6 cancelContainer'>
                 <h4>Order Cart</h4>
-                <table class="highlight" id="checkoutTable">
+                <table class='highlight' id='checkoutTable'>
                     <tr>
                         <th>Price</th>
                         <th>Item</th>
                         <th>Qunatity</th>
                         <th>Cancel Item</th>
                     </tr>
-                    <tr class="checkoutRows"><td></td></tr>
-                    <tr class="checkoutRows"><td></td></tr>
-                    <tr class="checkoutRows"><td></td></tr>
-                    <tr class="checkoutRows"><td></td></tr>
-                    <tr class="checkoutRows"><td></td></tr>
+                    <tr class='checkoutRows'><td></td></tr>
+                    <tr class='checkoutRows'><td></td></tr>
+                    <tr class='checkoutRows'><td></td></tr>
+                    <tr class='checkoutRows'><td></td></tr>
+                    <tr class='checkoutRows'><td></td></tr>
                 </table>
             </div>
         </div>
-        <div class="row"></div>
-        <div class="row">
-            <div class="col s6">
-                <form id='orderInfo' class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input id="firstName" type="text" class="validate">
-                            <label for="firstName">First Name</label>
+        <div class='row'></div>
+        <div class='row'>
+            <div class='col s6'>
+                <form id='orderInfo' class='col s12'>
+                    <div class='row'>
+                        <div class='input-field col s6'>
+                            <i class='material-icons prefix'>account_circle</i>
+                            <input id='firstName' type='text' class='validate'>
+                            <label for='firstName'>First Name</label>
                         </div>
-                        <div class="input-field col s6">
-                            <input id="lastName" type="text" class="validate">
-                            <label for="lastName">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">phone</i>
-                            <input id="phone" type="tel" class="validate">
-                            <label for="phone">Telephone</label>
+                        <div class='input-field col s6'>
+                            <input id='lastName' type='text' class='validate'>
+                            <label for='lastName'>Last Name</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">home</i>
-                            <input id="address" type="text" class="validate">
-                            <label for="address">Street Address</label>
+                    <div class='row'>
+                        <div class='input-field col s6'>
+                            <i class='material-icons prefix'>email</i>
+                            <input id='email' type='email' class='validate'>
+                            <label for='email'>Email</label>
+                        </div>
+                        <div class='input-field col s6'>
+                            <i class='material-icons prefix'>phone</i>
+                            <input id='phone' type='tel' class='validate'>
+                            <label for='phone'>Telephone</label>
                         </div>
                     </div>
-
-                    <div class="row">
-
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">my_location</i>
-                            <input id="zipcode" type="text" class="validate">
-                            <label for="zipcode">Zipcode</label>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <i class='material-icons prefix'>home</i>
+                            <input id='address' type='text' class='validate'>
+                            <label for='address'>Street Address</label>
                         </div>
-                        <div class="input-field col s6">
-                            <select class="validate" id="state">
-                                <option value="" disabled selected>Choose your State</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District Of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s6'>
+                            <i class='material-icons prefix'>my_location</i>
+                            <input id='zipcode' type='text' class='validate'>
+                            <label for='zipcode'>Zipcode</label>
+                        </div>
+                        <div class='input-field col s6'>
+                            <select class='validate' id='state'>
+                                <option value='' disabled selected>Choose your State</option>
+                                <option value='AL'>Alabama</option>
+                                <option value='AK'>Alaska</option>
+                                <option value='AZ'>Arizona</option>
+                                <option value='AR'>Arkansas</option>
+                                <option value='CA'>California</option>
+                                <option value='CO'>Colorado</option>
+                                <option value='CT'>Connecticut</option>
+                                <option value='DE'>Delaware</option>
+                                <option value='DC'>District Of Columbia</option>
+                                <option value='FL'>Florida</option>
+                                <option value='GA'>Georgia</option>
+                                <option value='HI'>Hawaii</option>
+                                <option value='ID'>Idaho</option>
+                                <option value='IL'>Illinois</option>
+                                <option value='IN'>Indiana</option>
+                                <option value='IA'>Iowa</option>
+                                <option value='KS'>Kansas</option>
+                                <option value='KY'>Kentucky</option>
+                                <option value='LA'>Louisiana</option>
+                                <option value='ME'>Maine</option>
+                                <option value='MD'>Maryland</option>
+                                <option value='MA'>Massachusetts</option>
+                                <option value='MI'>Michigan</option>
+                                <option value='MN'>Minnesota</option>
+                                <option value='MS'>Mississippi</option>
+                                <option value='MO'>Missouri</option>
+                                <option value='MT'>Montana</option>
+                                <option value='NE'>Nebraska</option>
+                                <option value='NV'>Nevada</option>
+                                <option value='NH'>New Hampshire</option>
+                                <option value='NJ'>New Jersey</option>
+                                <option value='NM'>New Mexico</option>
+                                <option value='NY'>New York</option>
+                                <option value='NC'>North Carolina</option>
+                                <option value='ND'>North Dakota</option>
+                                <option value='OH'>Ohio</option>
+                                <option value='OK'>Oklahoma</option>
+                                <option value='OR'>Oregon</option>
+                                <option value='PA'>Pennsylvania</option>
+                                <option value='RI'>Rhode Island</option>
+                                <option value='SC'>South Carolina</option>
+                                <option value='SD'>South Dakota</option>
+                                <option value='TN'>Tennessee</option>
+                                <option value='TX'>Texas</option>
+                                <option value='UT'>Utah</option>
+                                <option value='VT'>Vermont</option>
+                                <option value='VA'>Virginia</option>
+                                <option value='WA'>Washington</option>
+                                <option value='WV'>West Virginia</option>
+                                <option value='WI'>Wisconsin</option>
+                                <option value='WY'>Wyoming</option>
                             </select>
                             <label>Select State</label>
                         </div>
-
                     </div>
-                    <div class="row">
-                        <div class="col s6">
-                            <button class="btn waves-effect waves-light amber darken-4 btn-large" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
+                    <div class='row'>
+                        <div class='col s6'>
+                            <button class='btn waves-effect waves-light amber darken-4 btn-large' type='submit' name='action'>Submit
+                                <i class='material-icons right'>send</i>
                             </button>
                         </div>
                     </div>
                 </form>
-
             </div>
-            <div class="col s6">
-                <div class="row">
-                    <div class="col s4 totalBorder">
+            <div class='col s6'>
+                <div class='row'>
+                    <div class='col s4 totalBorder'>
                         <table>
                             <tr>
                                 <th>Subtotal: </th>
-                                <td id="subTotal">0.00</td>
+                                <td id='subTotal'>0.00</td>
                             </tr>
                             <tr>
                                 <th>Tip Amount: </th>
-                                <td id="tipPrice">0.00</td>
+                                <td id='tipPrice'>0.00</td>
                             </tr>
                             <tr>
                                 <th>After Tax: </th>
-                                <td id="finalPrice">0.00</td>
+                                <td id='finalPrice'>0.00</td>
                             </tr>
                         </table>
-
                     </div>
-                    <div class="col s8 tipContainer" >
-                        <div class="row">
-                            <div class="col s3">
-                                <a class="tipBtn waves-effect amber darken-2 waves-light btn" data-tip="0.10">10%Tip</a>
+                    <div class='col s8 tipContainer' >
+                        <div class='row'>
+                            <div class='col s3'>
+                                <a class='tipBtn waves-effect amber darken-2 waves-light btn' data-tip='0.10'>10%Tip</a>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s3">
-                                <a class="tipBtn waves-effect amber darken-3 waves-light btn" data-tip="0.15">15%Tip</a>
+                        <div class='row'>
+                            <div class='col s3'>
+                                <a class='tipBtn waves-effect amber darken-3 waves-light btn' data-tip='0.15'>15%Tip</a>
                             </div>
                         </div>
-                        <div class="row">    
-                            <div class="col s3">
-                                <a class="tipBtn waves-effect amber darken-4 waves-light btn" data-tip="0.20">20%Tip
-                                    &#37;</a>
+                        <div class='row'>    
+                            <div class='col s3'>
+                                <a class='tipBtn waves-effect amber darken-4 waves-light btn' data-tip='0.20'>20%Tip&#37;</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="app.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+    <script src='app.js'></script>
     <script>
         $(document).ready(function () {
             $('select').formSelect();
         });
     </script>
 </body>
-
 </html>

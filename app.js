@@ -1,6 +1,4 @@
-console.log("app.js linked")
-
-var proxy = "https://cors-anywhere.herokuapp.com/"
+var proxy = 'https://cors-anywhere.herokuapp.com/'
 var cancelArr = []
 var order = {}
 var price = 0
@@ -29,7 +27,6 @@ var state = document.getElementById('state')
 var cancelContainer = document.querySelector('.cancelContainer')
 var tipContainer = document.querySelector('.tipContainer')
 
-
 function removeItem (event) {
     var name = event.target.getAttribute('data-name')
     var quantityData = event.target.parentElement.parentElement.childNodes[2]
@@ -42,28 +39,27 @@ function removeItem (event) {
         tipAmount = totalPrice * tip
         afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
         quantityData.innerHTML = order[name].quantity
-        priceTableData.innerHTML = "$" + order[name].subTotal.toFixed(2)
-        subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
-        tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
-        finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+        priceTableData.innerHTML = '$' + order[name].subTotal.toFixed(2)
+        subTotalPrice.innerHTML = '$' + totalPrice.toFixed(2)
+        tipHTML.innerHTML = '$' + tipAmount.toFixed(2)
+        finalPrice.innerHTML = '$' + afterTax.toFixed(2)
         console.log(event.target)
     }
 }
 
-cancelContainer.addEventListener("click", removeItem)
+cancelContainer.addEventListener('click', removeItem)
 
 function addTip (event) {   
     tip = Number(event.target.getAttribute('data-tip'))
     tipAmount = totalPrice * tip
     afterTax = (totalPrice * 0.08) + totalPrice + tipAmount
-    subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
-    tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
-    finalPrice.innerHTML = "$" + afterTax.toFixed(2)
+    subTotalPrice.innerHTML = '$' + totalPrice.toFixed(2)
+    tipHTML.innerHTML = '$' + tipAmount.toFixed(2)
+    finalPrice.innerHTML = '$' + afterTax.toFixed(2)
     generateTable()          
 }
 
-tipContainer.addEventListener('click', addTip)
-           
+tipContainer.addEventListener('click', addTip)      
 
 fetch('https://galvanize-eats-api.herokuapp.com/menu')
     .then((response) => response.json())
@@ -77,7 +73,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             var itag = document.createElement('i')
             tableMenu.appendChild(tableRow)
             tableRow.appendChild(tablePrice)
-            tablePrice.innerHTML = "$" + data.menu[i].price
+            tablePrice.innerHTML = '$' + data.menu[i].price
             tableRow.appendChild(tableType)
             tableType.innerHTML = data.menu[i].type
             tableRow.appendChild(tableName)
@@ -91,9 +87,8 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             itag.innerHTML = 'add'
         }
 
-
         for (let i = 0; i < buttonArr.length; i++) {
-            buttonArr[i].addEventListener("click", function (event) {
+            buttonArr[i].addEventListener('click', function (event) {
                 var name = event.target.getAttribute('data-name')
                 if (order[name]) {
                     order[name].quantity++
@@ -117,7 +112,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
         }
 
         function generateTable() {
-            tableCheckout.innerHTML = ""
+            tableCheckout.innerHTML = ''
             var checkoutTR = document.getElementsByClassName('checkoutRows')
             var checkoutTR = document.createElement('tr')
             var priceTH = document.createElement('th')
@@ -129,13 +124,13 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
             checkoutTR.appendChild(itemTH)
             checkoutTR.appendChild(qunatityTH)
             checkoutTR.appendChild(cancelTH)
-            priceTH.innerHTML = "Price"
-            itemTH.innerHTML = "Item"
-            qunatityTH.innerHTML = "Quantity"
-            cancelTH.innerHTML = "Remove Item"
-            subTotalPrice.innerHTML = "$" + totalPrice.toFixed(2)
-            finalPrice.innerHTML = "$" + afterTax.toFixed(2)
-            tipHTML.innerHTML = "$" + tipAmount.toFixed(2)
+            priceTH.innerHTML = 'Price'
+            itemTH.innerHTML = 'Item'
+            qunatityTH.innerHTML = 'Quantity'
+            cancelTH.innerHTML = 'Remove Item'
+            subTotalPrice.innerHTML = '$' + totalPrice.toFixed(2)
+            finalPrice.innerHTML = '$' + afterTax.toFixed(2)
+            tipHTML.innerHTML = '$' + tipAmount.toFixed(2)
 
             for (var item in order) {
                 var fixedSubTotal = order[item].subTotal
@@ -148,7 +143,7 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 tableCheckout.appendChild(checkoutTR)
                 checkoutTR.appendChild(priceTD)
                 itag1.setAttribute('id', order[item].name)              
-                priceTD.innerHTML = "$" + fixedSubTotal.toFixed(2)
+                priceTD.innerHTML = '$' + fixedSubTotal.toFixed(2)
                 checkoutTR.appendChild(nameTD)
                 nameTD.innerHTML = item
                 checkoutTR.appendChild(quantityTD)
@@ -161,33 +156,30 @@ fetch('https://galvanize-eats-api.herokuapp.com/menu')
                 itag1.setAttribute('data-totalPrice', order[item].subTotal)
                 itag1.setAttribute('data-name', order[item].name)
                 itag1.innerHTML = 'cancel'
-
             }        
         }
-
+        
         inputForm.addEventListener('submit', function (event) {
             event.preventDefault();
             var sendOrder = {
-                name: first.value + " " + lastName.value,
+                name: first.value + ' ' + lastName.value,
                 telephone: phone.value,
                 email: email.value,
-                address: address.value + " " + state[state.selectedIndex].innerHTML + ", " + zipcode.value,
+                address: address.value + ' ' + state[state.selectedIndex].innerHTML + ', ' + zipcode.value,
                 finalOrder: order,
-                tip: "$" + tipAmount.toFixed(2),
-                FinalPrice: "$" + afterTax.toFixed(2)
+                tip: '$' + tipAmount.toFixed(2),
+                FinalPrice: '$' + afterTax.toFixed(2)
             }
             var postSettings = {
                 method: 'POST',
                 headers: {
-                    "Content-Type": "application/json; charset=utf-8"
+                    'Content-Type': 'application/json; charset=utf-8'
                 },
                 body: JSON.stringify(sendOrder)
             }
             fetch('https://galvanize-eats-api.herokuapp.com/orders', postSettings)
             .then(function(response){
-                // var data = response.json()
-                console.log(response)
-                 
+                console.log(response)     
             })
             .catch(console.error)
         })
